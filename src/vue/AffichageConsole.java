@@ -24,6 +24,6 @@ public class AffichageConsole {
 			System.out.print("\n"); 
 		}
 	}
-	
+	  
 
 }

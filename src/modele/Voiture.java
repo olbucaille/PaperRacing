@@ -14,7 +14,7 @@ import controleur.*;
 public class Voiture {
 	
 	Couple position;
-	Couple Acceleration;
+	
 	Couple Vitesse;
 	Pilote pilote;	
 	
@@ -23,7 +23,6 @@ public class Voiture {
 	{
 		position = pos;
 		pilote = new Joueur();		
-		Acceleration   = new Couple();
 		Vitesse = new Couple();
 	}
 	
@@ -42,7 +41,7 @@ public class Voiture {
 		Partie.t.getCase(position).elt.update(Acceleration);
 	}
 
-		public Couple getPosition()
+	public Couple getPosition()
 	{
 		return position;
 	}

@@ -23,11 +23,11 @@ public class Joueur extends Pilote {
 		Couple cp = new Couple();
 		switch(decision)
 		{
-		case 7 : cp.setX(1);
-				 cp.setY(1);
+		case 7 : cp.setX(-1);
+				 cp.setY(-1);
 				 break;
 				 
-		case 8 : cp.setX(1);
+		case 8 : cp.setX(-1);
 				 cp.setY(0);
 				 break;
 				 
@@ -35,28 +35,28 @@ public class Joueur extends Pilote {
 				 cp.setY(1);
 				 break;
 				 
-		case 4 : cp.setX(-1);
-				 cp.setY(0);
+		case 4 : cp.setX(0);
+				 cp.setY(-1);
 				 break;
 				 
 		case 5 : cp.setX(0);
 				 cp.setY(0);
 				 break;
 				 
-		case 6 : cp.setX(1);
-				 cp.setY(0);
+		case 6 : cp.setX(0);
+				 cp.setY(1);
 				 break;
 				 
-		case 1 : cp.setX(-1);
+		case 1 : cp.setX(1);
 				 cp.setY(-1);
 				 break;
 				 
-		case 2 : cp.setX(-1);
+		case 2 : cp.setX(1);
 				 cp.setY(0);
 				 break;
 				 
-		case 3 : cp.setX(-1);
-				 cp.setY(+1);
+		case 3 : cp.setX(+1);
+				 cp.setY(1);
 				 break;
 				 
 		default :  cp.setX(0);

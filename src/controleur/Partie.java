@@ -23,6 +23,7 @@ public class Partie {
 	
 	public void LancerPartie()
 	{
+		//mettre ça sous variable globale...
 		t = new Terrain(this,new File("C:/Users/olbucaille/Documents/TMIsep/Trackmania-Isep-A1-master/tracks/grid2.txt"));
 		
 		while(true)

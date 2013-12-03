@@ -14,7 +14,7 @@ import controleur.*;
 public class Voiture {
 	
 	Couple position;
-	
+	Couple vitesseInter;
 	Couple Vitesse;
 	Pilote pilote;	
 	
@@ -24,6 +24,7 @@ public class Voiture {
 		position = pos;
 		pilote = new Joueur();		
 		Vitesse = new Couple();
+		vitesseInter = new Couple();
 	}
 	
 	public void Update()

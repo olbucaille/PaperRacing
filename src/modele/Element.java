@@ -25,7 +25,7 @@ public abstract class Element {
 		System.out.println(Partie.joueur1.position.getX());
 		System.out.println(Partie.joueur1.position.getY());
 		
-		//la condition est moche mais on verrifie que l'on ne sort pas du terrain, si oui, vitesse à 0
+		//la condition est moche mais on verrifie que l'on ne sort pas du terrain, si oui, vitesse ï¿½ 0
 		if((Partie.joueur1.position.getX()+Partie.joueur1.Vitesse.getX())>=0 && (Partie.joueur1.position.getX()+Partie.joueur1.Vitesse.getX())<= Terrain.HAUTEUR_TERRAIN-1)
 			if((Partie.joueur1.position.getY()+Partie.joueur1.Vitesse.getY())>=0 && (Partie.joueur1.position.getY()+Partie.joueur1.Vitesse.getY())<= Terrain.LARGEUR_TERRAIN-1)
 			{
@@ -45,6 +45,46 @@ public abstract class Element {
 			Partie.joueur1.Vitesse.setY(0);
 		}
 
+	}
+	
+	protected Couple prochaineCase( Couple positionActuelle,Couple vitesse )
+	{
+		Couple positionFuture = positionActuelle;
+		if(vitesse.getX() != 0)
+		{
+			if(vitesse.getX()>=1)
+			{
+				positionFuture.setX(positionActuelle.getX()+1);
+				vitesse.setX(vitesse.getX()-1); 
+			}
+			if(vitesse.getX()<=-1)
+			{
+				positionFuture.setX(positionActuelle.getX()-1);
+				vitesse.setX(vitesse.getX()-1); 
+			}
+		}
+		
+		if(vitesse.getY() != 0)
+		{
+			if(vitesse.getY()>=1)
+			{
+				positionFuture.setY(positionActuelle.getY()+1);
+				vitesse.setY(vitesse.getY()-1); 
+			}
+			if(vitesse.getY()<=-1)
+			{
+				positionFuture.setY(positionActuelle.getY()-1);
+				vitesse.setY(vitesse.getY()-1); 
+			}
+		}
+		
+		if(positionFuture.getX()>=0 &&positionFuture.getX() <= Terrain.HAUTEUR_TERRAIN-1)
+			if(positionFuture.getY()>=0 && positionFuture.getY()<= Terrain.LARGEUR_TERRAIN-1)
+				return positionFuture;
+		
+		//msg crash + gerer si on a heurrtÃ© un obstacle 
+		return 	positionActuelle;
+		
 	}
 
 

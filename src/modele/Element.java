@@ -12,6 +12,7 @@ public abstract class Element {
 
 
 	public abstract void update( Couple Acceleration);
+	protected abstract Couple ChangerVitesse(Couple Vitesse);
 
 	@Override
 	public String toString() {

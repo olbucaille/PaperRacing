@@ -15,20 +15,20 @@ public class Partie {
 	public static void main(String[] args)
 	{
 		Partie Mc = new Partie();
-		Mc.LancerPartie();
+		Mc.lancerPartie();
 		
 		
 		
 	}
 	
-	public void LancerPartie()
+	public void lancerPartie()
 	{
 	 	t = new Terrain(this,new File("./grid/grid2.txt"));
 		
 		while(true)
 		{
 				AffichageConsole.afficherTerrain();
-				joueur1.Update();
+				joueur1.update();
 				
 		
 		}

@@ -5,7 +5,7 @@ import controleur.Couple;
 public abstract class Pilote {
 	
 	
-	public abstract Couple Update();
+	public abstract Couple update();
 	
 		
 	

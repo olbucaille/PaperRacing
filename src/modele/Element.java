@@ -12,7 +12,7 @@ public abstract class Element {
 
 
 	public abstract void update( Couple Acceleration);
-	protected abstract Couple ChangerVitesse(Couple Vitesse);
+	protected abstract Couple changerVitesse(Couple Vitesse);
 
 	@Override
 	public String toString() {
@@ -27,28 +27,28 @@ public abstract class Element {
 		System.out.println(Partie.joueur1.position.getY());
 		
 		//la condition est moche mais on verrifie que l'on ne sort pas du terrain, si oui, vitesse � 0
-		if((Partie.joueur1.position.getX()+Partie.joueur1.Vitesse.getX())>=0 && (Partie.joueur1.position.getX()+Partie.joueur1.Vitesse.getX())<= Terrain.HAUTEUR_TERRAIN-1)
-			if((Partie.joueur1.position.getY()+Partie.joueur1.Vitesse.getY())>=0 && (Partie.joueur1.position.getY()+Partie.joueur1.Vitesse.getY())<= Terrain.LARGEUR_TERRAIN-1)
+		if((Partie.joueur1.position.getX()+Partie.joueur1.vitesse.getX())>=0 && (Partie.joueur1.position.getX()+Partie.joueur1.vitesse.getX())<= Terrain.HAUTEUR_TERRAIN-1)
+			if((Partie.joueur1.position.getY()+Partie.joueur1.vitesse.getY())>=0 && (Partie.joueur1.position.getY()+Partie.joueur1.vitesse.getY())<= Terrain.LARGEUR_TERRAIN-1)
 			{
-				Partie.joueur1.position.setX( Partie.joueur1.position.getX()+Partie.joueur1.Vitesse.getX());
-				Partie.joueur1.position.setY( Partie.joueur1.position.getY()+Partie.joueur1.Vitesse.getY());
+				Partie.joueur1.position.setX( Partie.joueur1.position.getX()+Partie.joueur1.vitesse.getX());
+				Partie.joueur1.position.setY( Partie.joueur1.position.getY()+Partie.joueur1.vitesse.getY());
 			}
 			else
 			{
 				System.out.println("crash");
-				Partie.joueur1.Vitesse.setX(0);
-				Partie.joueur1.Vitesse.setY(0);
+				Partie.joueur1.vitesse.setX(0);
+				Partie.joueur1.vitesse.setY(0);
 			}
 		else
 		{
 			System.out.println("crash");
-			Partie.joueur1.Vitesse.setX(0);
-			Partie.joueur1.Vitesse.setY(0);
+			Partie.joueur1.vitesse.setX(0);
+			Partie.joueur1.vitesse.setY(0);
 		}
 
 	}
 	
-	protected Couple prochaineCase( Couple positionActuelle,Couple vitesse )
+	protected Couple prochaineCase(Couple positionActuelle,Couple vitesse )
 	{
 		Couple positionFuture = positionActuelle;
 		if(vitesse.getX() != 0)

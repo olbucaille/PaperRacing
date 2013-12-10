@@ -15,7 +15,7 @@ public class Voiture {
 	
 	Couple position;
 	Couple vitesseInter;
-	Couple Vitesse;
+	Couple vitesse;
 	Pilote pilote;	
 	
 	
@@ -23,21 +23,21 @@ public class Voiture {
 	{
 		position = pos;
 		pilote = new Joueur();		
-		Vitesse = new Couple();
+		vitesse = new Couple();
 		vitesseInter = new Couple();
 	}
 	
-	public void Update()
+	public void update()
 	{
 		
-		Couple cp = pilote.Update();
-		Update(cp);
+		Couple cp = pilote.update();
+		update(cp);
 	
 	
 		
 	}
 	
-	private void Update(Couple Acceleration)
+	private void update(Couple Acceleration)
 	{
 		Partie.t.getCase(position).elt.update(Acceleration);
 	}

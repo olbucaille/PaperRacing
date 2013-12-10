@@ -15,6 +15,12 @@ public class Obstacle extends Element {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	protected Couple changerVitesse(Couple Vitesse) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

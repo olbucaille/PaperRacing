@@ -10,15 +10,15 @@ import controleur.Couple;
 public class Joueur extends Pilote {
 
 	@Override
-	public Couple Update() {
+	public Couple update() {
 	
 		Scanner sc = new Scanner(System.in);
 		System.out.println("entrez une acceleration et position entre 1 et 9");
-		return GererDecision(sc.nextInt());
+		return gererDecision(sc.nextInt());
 
 	}
 
-	private Couple GererDecision(int decision)
+	private Couple gererDecision(int decision)
 	{
 		Couple cp = new Couple();
 		switch(decision)

@@ -16,9 +16,9 @@ public class Route extends Element {
 	public void update( Couple Acceleration) {
 			
 		// on met � jour la vitesse en y ajoutant l'acceleration
-		Partie.joueur1.Vitesse.setX( Partie.joueur1.Vitesse.getX()+Acceleration.getX());
-		Partie.joueur1.Vitesse.setY( Partie.joueur1.Vitesse.getY()+Acceleration.getY());
-		updateInterne(Partie.joueur1.position);
+		Partie.joueur1.vitesse.setX( Partie.joueur1.vitesse.getX()+Acceleration.getX());
+		Partie.joueur1.vitesse.setY( Partie.joueur1.vitesse.getY()+Acceleration.getY());
+	//	updateInterne(Partie.joueur1.position);
 		
 		// appel qui passe d'elt en elt 
 		
@@ -26,8 +26,14 @@ public class Route extends Element {
 		position();
 			
 	}
+
+	@Override
+	protected Couple changerVitesse(Couple Vitesse) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	updateInterne(Couple vitesse)
+/*	updateInterne(Couple vitesse)
 	{
 		Couple c = prochaineCase(Partie.joueur1.position,	vitesse);
 		changerVitesseJoueur();
@@ -54,6 +60,6 @@ public class Route extends Element {
 	protected changerVitesseJoueur() {
 	return;
 	}
-
+*/
 
 }

@@ -1,8 +1,6 @@
-package vue;
+package modele;
 
 import java.util.Scanner;
-
-import modele.Pilote;
 
 import controleur.Couple;
 
@@ -15,6 +13,14 @@ public class Joueur extends Pilote {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("entrez une acceleration et position entre 1 et 9");
 		return gererDecision(sc.nextInt());
+
+	}
+	
+	public Couple update(int i) {
+		
+
+		
+		return gererDecision(i);
 
 	}
 

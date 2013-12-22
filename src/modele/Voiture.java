@@ -3,9 +3,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import vue.Joueur;
-
-
 import com.sun.accessibility.internal.resources.accessibility;
 
 import controleur.*;
@@ -16,7 +13,7 @@ public class Voiture {
 	Couple position;
 	Couple vitesseInter;
 	Couple vitesse;
-	Pilote pilote;	
+	public Pilote pilote;	
 	
 	
 	public Voiture(Couple pos)
@@ -37,7 +34,7 @@ public class Voiture {
 		
 	}
 	
-	private void update(Couple Acceleration)
+	public void update(Couple Acceleration)
 	{
 		Partie.t.getCase(position).elt.update(Acceleration);
 	}

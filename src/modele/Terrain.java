@@ -1,9 +1,6 @@
 package modele;
 
 import java.io.*;
-import java.util.Observable;
-import java.util.Observer;
-
 import controleur.Couple;
 import controleur.Partie;
 
@@ -11,7 +8,7 @@ import controleur.Partie;
 /**
  * 
  * @author olbucaille
- *		reprsente le terrain
+ *		Represent le terrain
  */
 public class Terrain {
 
@@ -20,13 +17,8 @@ public class Terrain {
 	public static  int LARGEUR_TERRAIN = 0;
 
 	public String chaine;
-	private Partie Partie;
-	
-	
-	
 	public  Terrain(Partie main,File file)
 	{
-		Partie = main;
 		if(file.canRead()&& file.exists())
 		{
 
@@ -69,17 +61,17 @@ public class Terrain {
 
 
 				
-				for(int i=0,casei=-1;i<HAUTEUR_TERRAIN;i++, casei++)
+				for(int i=0;i<HAUTEUR_TERRAIN;i++)
 				{
 					ligne=br.readLine();
 					
-						for(int j=0,casej=-1;j<LARGEUR_TERRAIN;j++, casej++)
+						for(int j=0;j<LARGEUR_TERRAIN;j++)
 						{
 								Cases[i][j]= new Case();		
 								Cases[i][j].affecter(ligne.charAt(j));
 								if(ligne.charAt(j)=='S')
 								{
-									Partie.joueur1 = new Voiture(new Couple(i,j));
+									controleur.Partie.joueur1 = new Voiture(new Couple(i,j));
 								}
 							}
 							

@@ -12,6 +12,7 @@ import javax.swing.*;
 import modele.Name;
 
 
+@SuppressWarnings("serial")
 public class Lanceur extends JFrame implements ActionListener
 {
 	public JLabel img;
@@ -99,8 +100,8 @@ public class Lanceur extends JFrame implements ActionListener
 
 
 			Racing game =Racing.getInstance();
-			game.init(lb_nomJoueur.getText());
-			game.setMinimumSize(new Dimension(800,700));
+			game.init(tf_nomjoueur.getText());
+			game.setMinimumSize(new Dimension(850,700));
 			game.setVisible(true);	
 			game.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			//Racing.init(tf_nomjoueur.getText());

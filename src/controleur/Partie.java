@@ -1,8 +1,6 @@
 package controleur;
 import java.io.File;
 
-import vue.AffichageConsole;
-import vue.Racing;
 import modele.Name;
 import modele.Terrain;
 import modele.Voiture;

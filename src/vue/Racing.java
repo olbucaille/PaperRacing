@@ -1,16 +1,9 @@
 package vue;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Insets;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -18,42 +11,49 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.Border;
-
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import modele.Name;
-import modele.Terrain;
-import controleur.Couple;
 import controleur.Partie;
 
+@SuppressWarnings("serial")
 public class Racing extends JFrame implements ActionListener {
 
 	private static Racing instance;
 	public static Partie partie;
-	public JLabel img;
-	public JButton bt_valider;
-	public JLabel lb_nomJoueur;
-	public JTextField tf_nomjoueur;
-	public static 	TerrainPanel picLabel ;
+
+	public static TerrainPanel picLabel ;
+
+	private JLabel lb_nomJoueur;
+	private JLabel jl_nomjoueur;
+	private JLabel jl_positionJoueur;
+	private JLabel jl_accelerationJoueur;
+
 	private JButton bt_control [];
+
+
+	JLabel logo ;
+	JPanel pnLogo;
+
+
+	private  JSplitPane sp_panel;
+	JScrollPane picPane;
+
+	private JPanel gdControl;
+	private JPanel bdMenu;
+	JPanel pnjoueur;
 
 	private Racing ()
 	{
-		super("Paper Racing");	
-
-		partie = new Partie();
-		partie.lancerPartie();
-		creerComposants();
-		placerComposants();		
-
+		super("Paper Racing");			
 	}
 
+	//singleton
 	public static Racing getInstance()
 	{
 		if(instance == null)
@@ -62,21 +62,21 @@ public class Racing extends JFrame implements ActionListener {
 	}
 
 	public void init(String pseudo)
-	{
-	 
-		lb_nomJoueur = new JLabel(pseudo);
+	{	 
+		jl_nomjoueur = new JLabel(pseudo);
+		partie = new Partie();
+		partie.lancerPartie();
+		creerComposants();
+		placerComposants();		
 	}
 
 
 
 	private void creerComposants() 
 	{
+		lb_nomJoueur = new JLabel("pseudo"+"\n");
 
-
-		lb_nomJoueur = new JLabel("pseudo");
-		tf_nomjoueur = new JTextField("unknown");
 		bt_control= new JButton[9];
-
 
 		bt_control[0] = new JButton(new ImageIcon(Name.FLECHE_BAS_GAUCHE));
 		bt_control[1] = new JButton(new ImageIcon(Name.FLECHE_BAS));		
@@ -88,42 +88,65 @@ public class Racing extends JFrame implements ActionListener {
 		bt_control[7] = new JButton(new ImageIcon(Name.FLECHE_HAUT));
 		bt_control[8] = new JButton(new ImageIcon(Name.FLECHE_HAUT_DROIT));
 
-		for(int i=0; i<9;i++){
+		for(int i=0; i<9;i++)
+		{
 			bt_control[i].addActionListener(this);
 			bt_control[i].setPreferredSize(new Dimension(60, 60));
 		}
 
+		//création des conteneurs et composants
+
+		gdControl = new JPanel(new GridLayout(3,3));
+		bdMenu = new JPanel(new BorderLayout());
+		new JPanel(new FlowLayout());
+		new JPanel(new BorderLayout());
+		this.getContentPane().setLayout(new BorderLayout());
+
+		//imagelogo 
+		BufferedImage myPicture= null;
+		try {
+			myPicture = ImageIO.read(new File(Name.LOGO));
+		} catch (IOException e) 
+		{}
+		logo = new JLabel(new ImageIcon( myPicture));
+		pnLogo = (JPanel) new JPanel(new FlowLayout()); 
+		pnLogo.add(logo);
+
+		//infos nom joueur
+		pnjoueur = (JPanel) new JPanel(new GridLayout(10,1));
 
 
-		//new ImageIcon("./../media/fleche.jpg")
 	}
 
 
 	private void placerComposants() 
 	{
-		//création des conteneurs et composants
+		//affetations infos
+			//nomjoueur
+		JPanel pn_nomJoueur = new JPanel(new FlowLayout());
+		pn_nomJoueur.add(lb_nomJoueur);
+		pn_nomJoueur.add(jl_nomjoueur);
 
-		JPanel gdControl = new JPanel(new GridLayout(3,3));
-		JPanel bdMenu = new JPanel(new BorderLayout());
-		JPanel flPseudo = new JPanel(new FlowLayout());
-		JPanel pan1 = new JPanel(new BorderLayout());
-		this.getContentPane().setLayout(new BorderLayout());
-		
-		BufferedImage myPicture= null;
-		try {
-		myPicture = ImageIO.read(new File(Name.LOGO));
-			} catch (IOException e) 
-			{}
-			JLabel logo = new JLabel(new ImageIcon( myPicture));
-			JPanel pnLogo = (JPanel) new JPanel(new FlowLayout()); 
-			pnLogo.add(logo);
-			
-		
-			JPanel pnjoueur = (JPanel) new JPanel(new FlowLayout()); 
-			pnjoueur.add(lb_nomJoueur);
-			
-			
-			
+
+			//info position
+		JPanel pn_position = new JPanel(new FlowLayout());
+		jl_positionJoueur = new JLabel(" "+ Partie.joueur1.getPosition().toString());
+		pn_position.add(new JLabel("Position"));
+		pn_position.add(jl_positionJoueur);
+
+			//info acceleration
+		JPanel pn_acceleration = new JPanel(new FlowLayout());
+		jl_accelerationJoueur = new JLabel(" "+ Partie.joueur1.getVitesse());
+		pn_acceleration.add(new JLabel("Acceleration"));
+		pn_acceleration.add(jl_accelerationJoueur);
+
+
+		pnjoueur.add(pn_nomJoueur);
+		pnjoueur.add(pn_position);
+		pnjoueur.add(pn_acceleration);
+
+
+
 		gdControl.add(bt_control[6]);
 		gdControl.add(bt_control[7]);
 		gdControl.add(bt_control[8]);
@@ -133,33 +156,32 @@ public class Racing extends JFrame implements ActionListener {
 		gdControl.add(bt_control[0]);
 		gdControl.add(bt_control[1]);
 		gdControl.add(bt_control[2]);
-
-
-
 		bdMenu.add(gdControl, BorderLayout.SOUTH);
 
-		picLabel = new TerrainPanel();
-		
 
-		//picLabel.setPreferredSize(new Dimension(Terrain.LARGEUR_TERRAIN*20,(Terrain.HAUTEUR_TERRAIN+1)*20));
-		bdMenu.setPreferredSize(new Dimension(180, 180));
-		//On Affecte le conteneur principal
-		
-		JPanel glDroit = new JPanel(new GridLayout(2,1));
-		JPanel glGauche = new JPanel(new GridLayout(2,1));
-		
-		glDroit.add(picLabel);
-		glDroit.add(logo);
-		glGauche.add(pnjoueur);
-		glGauche.add(gdControl);
-		
-	//	pan1.add(glDroit, BorderLayout.EAST);
-	//	pan1.add(glGauche, BorderLayout.WEST);	
-		
+		picLabel = new TerrainPanel();
+		picPane = new JScrollPane(picLabel);
+
+
+		//On Affecte les deux conteurs principaux (gauche et droit)
+		JSplitPane glDroit = new JSplitPane(JSplitPane.VERTICAL_SPLIT, picPane,logo);
+		glDroit.setOneTouchExpandable(true);
+		glDroit.setDividerLocation(350);
+		JSplitPane glGauche =  new JSplitPane(JSplitPane.VERTICAL_SPLIT, pnjoueur,gdControl);
+		glGauche.setOneTouchExpandable(true);
+		glGauche.setDividerLocation(350);
+
+
+		//on cree notre panel avec des splitpane et des scrolpane
+		JScrollPane sp_Gauche = new JScrollPane(glGauche);
+		sp_Gauche.setPreferredSize(new Dimension(10, 10));
+		sp_panel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,new JScrollPane(glDroit),sp_Gauche);
+		sp_panel.setOneTouchExpandable(true);
+		sp_panel.setDividerLocation(550);
+
+
 		//On ajoute à la fenetre
-		this.getContentPane().add(glGauche,BorderLayout.EAST);
-		this.getContentPane().add(glDroit, BorderLayout.CENTER);
-		
+		this.getContentPane().add(sp_panel, BorderLayout.CENTER);		
 
 	}
 
@@ -167,25 +189,19 @@ public class Racing extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 
-		for(int i=0; i<9;i++)
-		{		
-			if (source == bt_control[i])
-			{
-				partie.update(++i);		
-
-			}
-
-		}
-
+		for(int i=0; i<9;i++)				
+			if (source == bt_control[i])			
+				partie.update(++i);	
 		update();
 
 	}
 
 	public void update()
 	{	
-
+		jl_positionJoueur.setText(" "+ Partie.joueur1.getPosition().toString());
+		jl_accelerationJoueur.setText( " "+ Partie.joueur1.getVitesse().getX()*-1+", "+Partie.joueur1.getVitesse().getY());
 		Racing.getInstance().getContentPane().repaint();
-		picLabel.repaint();	
+		picLabel.repaint();
 
 	}
 

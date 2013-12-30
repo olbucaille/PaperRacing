@@ -1,10 +1,4 @@
 package modele;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-
-import com.sun.accessibility.internal.resources.accessibility;
-
 import controleur.*;
 
 
@@ -44,5 +38,9 @@ public class Voiture {
 		return position;
 	}
 	
+	public Couple getVitesse()
+	{
+		return vitesse;
+	}
 
 }

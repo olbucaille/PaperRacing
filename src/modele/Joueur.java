@@ -10,6 +10,7 @@ public class Joueur extends Pilote {
 	@Override
 	public Couple update() {
 	
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		System.out.println("entrez une acceleration et position entre 1 et 9");
 		return gererDecision(sc.nextInt());

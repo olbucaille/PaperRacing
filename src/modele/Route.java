@@ -1,7 +1,5 @@
 package modele;
 
-import javax.swing.text.Position;
-
 import controleur.Couple;
 import controleur.Partie;
 

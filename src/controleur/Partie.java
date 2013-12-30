@@ -24,7 +24,7 @@ public class Partie {
 	
 	public void lancerPartie()
 	{
-	 	t = new Terrain(this,new File(Name.TEST_GRID));
+	 	t = new Terrain(new File(Name.TEST_GRID));
 		
 				
 	}

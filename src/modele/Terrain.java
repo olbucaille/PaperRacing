@@ -17,7 +17,7 @@ public class Terrain {
 	public static  int LARGEUR_TERRAIN = 0;
 
 	public String chaine;
-	public  Terrain(Partie main,File file)
+	public  Terrain(File file)
 	{
 		if(file.canRead()&& file.exists())
 		{

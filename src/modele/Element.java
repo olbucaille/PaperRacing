@@ -22,7 +22,7 @@ public abstract class Element {
 		//	System.out.println("nouv : "+ nouvelleVitesse);
 		if( this instanceof Obstacle) 
 			return positionPrecedente;
-		if(Partie.t.getCase(nouvellePosition).elt instanceof Obstacle)
+		if(verifyPosition(nouvellePosition)&&Partie.t.getCase(nouvellePosition).elt instanceof Obstacle)
 			return positionActuelle;
 		if(nouvelleVitesse.isnull())
 			if(!verifyPosition(nouvellePosition))

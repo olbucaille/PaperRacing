@@ -10,6 +10,12 @@ public class Couple {
 		this.y = y;
 	}
 	
+	public Couple(Couple c)
+	{
+		x = c.x;
+		y = c.y;
+	}
+	
 
 	public Couple()
 	{
@@ -34,6 +40,13 @@ public class Couple {
 	}
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public boolean isnull()
+	{
+		if(x==0&&y==0)
+			return true;
+		return false;
 	}
 
 

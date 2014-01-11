@@ -38,15 +38,36 @@ public class Herbe extends Element {
 				else
 					Partie.joueur1.vitesse.setY(Partie.joueur1.vitesse.getY()+1+Acceleration.getY());
 		
-		position();
-		 
-		
+	//	position();
+		Couple nouvellePosition = updateInterne(new Couple(Partie.joueur1.vitesse),Partie.joueur1.position,new Couple(Partie.joueur1.vitesse));
+
+			Partie.joueur1.position.setX( nouvellePosition.getX());
+			Partie.joueur1.position.setY(nouvellePosition.getY());
+
 	}
 
 	@Override
-	protected Couple changerVitesse(Couple Vitesse) {
-		// TODO Auto-generated method stub
-		return null;
+	protected Couple changerVitesse(Couple vitesse) {
+		if(vitesse.getX()==1) 
+			vitesse.setX(vitesse.getX()-1);
+		if(vitesse.getX()==-1) 
+			vitesse.setX(vitesse.getX()+1);
+		if(vitesse.getY()==1) 
+			vitesse.setY(vitesse.getY()-1);
+		if(vitesse.getY()==-1) 
+			vitesse.setY(vitesse.getY()+1);
+		
+		
+		if(vitesse.getX()>=2) 
+			vitesse.setX(vitesse.getX()-2);
+		if(vitesse.getX()<=-2) 
+			vitesse.setX(vitesse.getX()+2);
+		if(vitesse.getY()>=2) 
+			vitesse.setY(vitesse.getY()-2);
+		if(vitesse.getY()<=-2) 
+			vitesse.setY(vitesse.getY()+2);
+	//	vitesse.setToZero();
+		return vitesse;
 	}
 
 	

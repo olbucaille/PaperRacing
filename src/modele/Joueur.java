@@ -19,8 +19,6 @@ public class Joueur extends Pilote {
 	
 	public Couple update(int i) {
 		
-
-		
 		return gererDecision(i);
 
 	}

@@ -23,9 +23,7 @@ public class Voiture {
 		
 		Couple cp = pilote.update();
 		update(cp);
-	
-	
-		
+				
 	}
 	
 	public void update(Couple Acceleration)

@@ -38,6 +38,15 @@ class TerrainPanel extends JPanel {
 					case " ":
 						g.drawImage(SkinProvider.GetInstance().SpriteProvider(Name.ROAD_NAME), 20*j, 20*i,20,20,Color.WHITE, this);						
 						break;
+						
+					case "#":
+						g.drawImage(SkinProvider.GetInstance().SpriteProvider(Name.ARRIVAL_NAME), 20*j, 20*i,20,20,Color.WHITE, this);						
+						break;
+						
+					case "x":
+						g.drawImage(SkinProvider.GetInstance().SpriteProvider(Name.ROCK_NAME), 20*j, 20*i,20,20,Color.WHITE, this);						
+						break;	
+						
 
 					}
 

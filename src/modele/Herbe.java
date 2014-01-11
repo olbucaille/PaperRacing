@@ -40,7 +40,7 @@ public class Herbe extends Element {
 		
 	//	position();
 		Couple nouvellePosition = updateInterne(new Couple(Partie.joueur1.vitesse),Partie.joueur1.position,new Couple(Partie.joueur1.vitesse));
-
+		Partie.joueur1.score-=10;
 			Partie.joueur1.position.setX( nouvellePosition.getX());
 			Partie.joueur1.position.setY(nouvellePosition.getY());
 
@@ -68,6 +68,12 @@ public class Herbe extends Element {
 			vitesse.setY(vitesse.getY()+2);
 	//	vitesse.setToZero();
 		return vitesse;
+	}
+
+	@Override
+	public boolean isArrival() {
+		
+		return false;
 	}
 
 	

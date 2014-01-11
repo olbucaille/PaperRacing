@@ -39,6 +39,8 @@ public class SkinProvider {
 		SpriteList.put(Name.GRASS_NAME, packageImage(Name.GRASS));
 		SpriteList.put(Name.ROAD_NAME, packageImage(Name.ROAD));
 		SpriteList.put(Name.VOITURE_NAME, packageImage(Name.VOITURE));
+		SpriteList.put(Name.ARRIVAL_NAME, packageImage(Name.ARRIVAL));
+		SpriteList.put(Name.ROCK_NAME, packageImage(Name.ROCK));
 
 
 	}

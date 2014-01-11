@@ -16,6 +16,8 @@ public class Name {
 	public static final String VOITURE ="./media/voiture.gif";
 	public static final String ROAD ="./media/road.png";
 	public static final String GRASS ="./media/herbe.png";
+	public static final String ARRIVAL ="./media/arrival.png";
+	public static final String ROCK ="./media/rock.png";
 
 	*/
 	
@@ -34,11 +36,15 @@ public class Name {
 	public static final String VOITURE ="./src/media/voiture.gif";
 	public static final String ROAD ="./src/media/road.png";
 	public static final String GRASS ="./src/media/herbe.png";
+	public static final String ARRIVAL ="./src/media/arrival.png";
+	public static final String ROCK ="./src/media/rock.png";
 		
 	
 	public static final String VOITURE_NAME ="voiture";
 	public static final String ROAD_NAME ="road";
 	public static final String GRASS_NAME ="grass";
+	public static final String ARRIVAL_NAME ="arrival";
+	public static final String ROCK_NAME ="rock";
 	
 	
 	

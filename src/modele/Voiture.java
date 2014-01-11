@@ -4,10 +4,12 @@ import controleur.*;
 
 public class Voiture {
 	
-	Couple position;
-	Couple vitesseInter;
+	Couple position;	
 	Couple vitesse;
+	public int score;
 	public Pilote pilote;	
+	public boolean crash;
+	public boolean win;
 	
 	
 	public Voiture(Couple pos)
@@ -15,7 +17,8 @@ public class Voiture {
 		position = pos;
 		pilote = new Joueur();		
 		vitesse = new Couple();
-		vitesseInter = new Couple();
+		score = 1000;
+	
 	}
 	
 	public void update()

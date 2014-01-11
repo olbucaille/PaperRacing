@@ -1,6 +1,7 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -18,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+
 import modele.Name;
 import controleur.Partie;
 
@@ -32,7 +34,9 @@ public class Racing extends JFrame implements ActionListener {
 	private JLabel lb_nomJoueur;
 	private JLabel jl_nomjoueur;
 	private JLabel jl_positionJoueur;
-	private JLabel jl_accelerationJoueur;
+	private JLabel jl_vitesseJoueur;
+	private JLabel jl_statutJoueur;
+	private JLabel jl_scoreJoueur;
 
 	private JButton bt_control [];
 
@@ -122,28 +126,41 @@ public class Racing extends JFrame implements ActionListener {
 	private void placerComposants() 
 	{
 		//affetations infos
-			//nomjoueur
+		//nomjoueur
 		JPanel pn_nomJoueur = new JPanel(new FlowLayout());
 		pn_nomJoueur.add(lb_nomJoueur);
 		pn_nomJoueur.add(jl_nomjoueur);
 
 
-			//info position
+		//info position
 		JPanel pn_position = new JPanel(new FlowLayout());
 		jl_positionJoueur = new JLabel(" "+ Partie.joueur1.getPosition().toString());
 		pn_position.add(new JLabel("Position"));
 		pn_position.add(jl_positionJoueur);
 
-			//info acceleration
-		JPanel pn_acceleration = new JPanel(new FlowLayout());
-		jl_accelerationJoueur = new JLabel(" "+ Partie.joueur1.getVitesse());
-		pn_acceleration.add(new JLabel("Acceleration"));
-		pn_acceleration.add(jl_accelerationJoueur);
+		//info vitesse
+		JPanel pn_vitesse = new JPanel(new FlowLayout());
+		jl_vitesseJoueur = new JLabel(" "+ Partie.joueur1.getVitesse());
+		pn_vitesse.add(new JLabel("Vitesse"));
+		pn_vitesse.add(jl_vitesseJoueur);
+
+		//info score
+		JPanel pn_score = new JPanel(new FlowLayout());
+		jl_scoreJoueur = new JLabel(" "+ Partie.joueur1.score);
+		pn_score.add(new JLabel("Score Joueur : "));
+		pn_score.add(jl_scoreJoueur);
+
+		//info statut
+		JPanel pn_statut = new JPanel(new FlowLayout());
+		jl_statutJoueur = new JLabel(" okay ");
+		pn_statut.add(jl_statutJoueur);
 
 
 		pnjoueur.add(pn_nomJoueur);
 		pnjoueur.add(pn_position);
-		pnjoueur.add(pn_acceleration);
+		pnjoueur.add(pn_vitesse);
+		pnjoueur.add(pn_score);
+		pnjoueur.add(pn_statut);
 
 
 
@@ -199,7 +216,20 @@ public class Racing extends JFrame implements ActionListener {
 	public void update()
 	{	
 		jl_positionJoueur.setText(" "+ Partie.joueur1.getPosition().toString());
-		jl_accelerationJoueur.setText( " "+ Partie.joueur1.getVitesse().getX()*-1+", "+Partie.joueur1.getVitesse().getY());
+		jl_vitesseJoueur.setText( " "+ Partie.joueur1.getVitesse().getX()*-1+", "+Partie.joueur1.getVitesse().getY());
+		jl_scoreJoueur.setText( " "+ Partie.joueur1.score);
+		
+		
+		if(Partie.joueur1.crash)
+			jl_statutJoueur.setText("CRASH !");
+
+		else if(Partie.joueur1.win){
+			for(int i=0; i<9;i++)
+			gdControl.getComponent(i).setEnabled(false);
+			jl_statutJoueur.setText("FINISH ! ");	
+		}
+		else
+			jl_statutJoueur.setText("continue,...");
 		Racing.getInstance().getContentPane().repaint();
 		picLabel.repaint();
 

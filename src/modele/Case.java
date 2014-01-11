@@ -7,18 +7,20 @@ public class Case {
 	public Case()
 	{
 	
-		elt = new Route();
+		elt = new Route(false);
 	}
 	public void affecter(char val)
 	{
 		if(val == ' ')
-			elt = new Route();
+			elt = new Route(false);
 		if(val == '.')
 			elt = new Herbe();
 		if(val == 'x')
 			elt = new Obstacle();
 		if(val == 'S')
-			elt = new Route();
+			elt = new Route(false);
+		if(val == '#')
+			elt = new Route(true);
 		
 		
 	}

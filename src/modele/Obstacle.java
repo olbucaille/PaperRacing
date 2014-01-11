@@ -25,5 +25,10 @@ public class Obstacle extends Element {
 		return vitesse;
 	}
 
+	@Override
+	public boolean isArrival() {
+			return false;
+	}
+
 
 }

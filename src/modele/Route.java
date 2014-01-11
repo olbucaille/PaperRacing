@@ -4,10 +4,17 @@ import controleur.Couple;
 import controleur.Partie;
 
 public class Route extends Element {
-	public Route ()
+	
+	private boolean isArrivalLine;
+	
+	public Route (boolean arrival)
 	{
-		nom = " ";
 		
+		isArrivalLine = arrival;
+		if(isArrivalLine == false)
+			nom = " ";
+		else
+			nom = "#";
 	}
 
 	@Override
@@ -24,6 +31,7 @@ public class Route extends Element {
 		
 		//on met � jour la position		
 		//position();
+		Partie.joueur1.score-=10;
 	
 		Partie.joueur1.position.setX( nouvellePosition.getX());
 		Partie.joueur1.position.setY(nouvellePosition.getY());
@@ -44,6 +52,11 @@ public class Route extends Element {
 		
 	//	 vitesse.setToZero();
 		return vitesse;
+	}
+	
+	public boolean isArrival()
+	{
+		return isArrivalLine;
 	}
 
 
